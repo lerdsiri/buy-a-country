@@ -4,7 +4,7 @@ import React from 'react';
 export default function SearchBar({searchFunc}) {
     return (
         <div className='search-bar'>
-            <label className='label' htmlFor='search-term'><button><strong>SEARCH</strong></button></label>
+            <label className='label' htmlFor='search-term'><strong>SEARCH</strong></label>
             <input 
                 id='search-term'
                 type='text'  
