@@ -1,0 +1,15 @@
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    margin: 2rem;
+}
+
+.back-btn {
+    padding: 2rem;
+    margin: 2rem;
+}
