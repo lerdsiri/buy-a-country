@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+# Assignment Description
+
+Create a display of country information based on rest-countries api : https://restcountries.com/#api-endpoints-v3-name
+Also create a functional search bar, which will search the list of countries by name.
+
+Features: React, Hooks, Routers, Bootstrap
+
+Site deployed at https://react-hooks-router-assignment.netlify.app/
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
