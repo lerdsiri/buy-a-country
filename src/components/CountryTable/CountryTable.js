@@ -9,12 +9,12 @@ export default function CountryTable({filteredList}) {
 
     return (
         <Table striped bordered hover>
-            <thead>
+            <thead align='center'>
                 <tr>
                     <th>Flag</th>
                     <th>Name</th>
                     <th>Population</th>
-                    <th>Lang</th>
+                    <th>Languages</th>
                     <th>Region</th>
                 </tr>
             </thead>
@@ -22,12 +22,12 @@ export default function CountryTable({filteredList}) {
                 {filteredList && filteredList.map((country) => {
                 
                     return (
-                        <tr key={country.name.common}>
+                        <tr key={country.name.common} align='center'>
                             <td><img src={country.flags.png} alt="" className="flags" /></td>
                             <td>
                                 <Link to={`/details/${country.name.common}`}>{country.name.common}</Link>
                             </td>
-                            <td>{country.population}</td>
+                            <td align='right'>{country.population.toLocaleString('en-US')}</td>
                             <td>
                                 {country.languages ? Object.values(country.languages).join(', ') : "No languages"}
                             </td>
