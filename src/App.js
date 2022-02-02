@@ -1,11 +1,14 @@
 import './App.css';
-import { useState, useEffect} from 'react';
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './components/Home/Home';
 import CountryDetails from './components/CountryDetails/CountryDetails';
 
+import useFetchCountries from './components/hooks/useFetchCountries';
+
 function App() {
+  /*
   const [countries, setCountries] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
 
@@ -17,16 +20,28 @@ function App() {
             setFilteredList(data);
           })
           .catch((error) => alert("Problem fetching data"));
-  }, []) ;
+  }, []);
+  */
+
+  const [countries] = useFetchCountries();
+  const [filteredList, setFilteredList] = useState([]);
   
+   /*
+  let result = countries;
+  setFilteredList(result);
+
+  This code above results in infinite re-render loop.
+  How to start filteredList with a full list of countries?
+  */
+
   const searchFunc = (evt) => {
-    let results = countries.filter((country) => {
+    let result = countries.filter((country) => {
       return (
         country.name.common.toLowerCase().search(evt.target.value.toLowerCase()) !== -1
       );
     })
 
-    setFilteredList(results);
+    setFilteredList(result); 
   }
 
   return (

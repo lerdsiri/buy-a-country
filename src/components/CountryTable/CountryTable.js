@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 
 export default function CountryTable({filteredList}) {
+
     return (
         <Table striped bordered hover>
             <thead>
@@ -17,7 +18,7 @@ export default function CountryTable({filteredList}) {
             </thead>
             <tbody>
                 {filteredList && filteredList.map((country) => {
-                    
+                
                     return (
                         <tr key={country.name.common}>
                             <td><img src={country.flags.png} alt="" className="flags" /></td>
