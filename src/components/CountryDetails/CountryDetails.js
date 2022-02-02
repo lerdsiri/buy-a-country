@@ -1,13 +1,14 @@
-import './CountryDetails.css';
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
-export default function CountryDetails({filteredList}) {
+import './CountryDetails.css';
+
+export default function CountryDetails({filteredList, handleClick}) {
     const {name} = useParams();
 
     let country = filteredList.filter(country => country.name.common === {name}.name)[0];
-    console.log(country);
 
     return (
         <div className='details'>
@@ -22,9 +23,13 @@ export default function CountryDetails({filteredList}) {
                 </ListGroup>
             </Card>
 
-            <button className='back-btn'><Link to='/'>Back to Homepage</Link></button>
+            <button className='back-btn' onClick={handleClick}><Link to='/'>Back to Homepage</Link></button>
         </div>
     );
 }
 
-//add a button to take us back to Home
+CountryDetails.displayName = 'CountryDetails';
+CountryDetails.propTypes = {
+    filteredList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    handleClick: PropTypes.func
+}

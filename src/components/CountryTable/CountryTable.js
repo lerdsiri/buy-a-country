@@ -1,7 +1,9 @@
-import './CountryTable.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
+import PropTypes from 'prop-types';
+
+import './CountryTable.css';
 
 export default function CountryTable({filteredList}) {
 
@@ -36,4 +38,9 @@ export default function CountryTable({filteredList}) {
             </tbody>
         </Table>
     );
+}
+
+CountryTable.displayName = 'CountryTable';
+CountryTable.propTypes = {
+    filteredList: PropTypes.arrayOf(PropTypes.object).isRequired
 }
