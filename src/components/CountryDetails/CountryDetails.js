@@ -2,11 +2,13 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 import './CountryDetails.css';
 
-export default function CountryDetails({filteredList, handleClick}) {
+export default function CountryDetails({handleClick}) {
     const {name} = useParams();
+    const filteredList = useSelector((state) => state.countryReducer.filteredList);
 
     let country = filteredList.filter(country => country.name.common === {name}.name)[0];
 
@@ -30,6 +32,5 @@ export default function CountryDetails({filteredList, handleClick}) {
 
 CountryDetails.displayName = 'CountryDetails';
 CountryDetails.propTypes = {
-    filteredList: PropTypes.arrayOf(PropTypes.object).isRequired,
     handleClick: PropTypes.func
 }

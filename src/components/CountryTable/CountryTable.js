@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 import './CountryTable.css';
 
-export default function CountryTable({filteredList}) {
+export default function CountryTable() {
+    const filteredList = useSelector((state) => state.countryReducer.filteredList);
 
     return (
         <Table striped bordered hover>
@@ -41,6 +42,3 @@ export default function CountryTable({filteredList}) {
 }
 
 CountryTable.displayName = 'CountryTable';
-CountryTable.propTypes = {
-    filteredList: PropTypes.arrayOf(PropTypes.object).isRequired
-}

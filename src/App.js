@@ -1,28 +1,33 @@
-import { useState, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import Home from './components/Home/Home';
 import CountryDetails from './components/CountryDetails/CountryDetails';
-import useFetchCountries from './components/hooks/useFetchCountries';
+import { fetchCountries } from './redux/actions';
+import { filterCountries } from './redux/actions';
 import './App.css';
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filteredList] = useFetchCountries(searchTerm);
+  const dispatch = useDispatch();
+
+  useEffect( () => {
+    dispatch(fetchCountries());
+  }, [dispatch]);
 
   const handleChange = useCallback((evt) => {
-    setSearchTerm(evt.target.value);
-  }, []);
+    dispatch(filterCountries(evt.target.value))
+  }, [dispatch]);
 
   const handleClick = useCallback(() => {
-    setSearchTerm("");
-  }, []);
+    dispatch(filterCountries(""));
+  }, [dispatch]);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home filteredList={filteredList} handleChange={handleChange} />} />
-        <Route path='/details/:name' element={<CountryDetails filteredList={filteredList} handleClick={handleClick}/>} />
+        <Route path='/' element={<Home handleChange={handleChange} />} />
+        <Route path='/details/:name' element={<CountryDetails handleClick={handleClick}/>} />
       </Routes>
 
     </BrowserRouter>

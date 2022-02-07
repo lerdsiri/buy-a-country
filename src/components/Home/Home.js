@@ -5,18 +5,17 @@ import { memo } from 'react';
 import CountryTable from '../CountryTable/CountryTable';
 import SearchBar from '../SearchBar/SearchBar';
 
-function Home({filteredList, handleChange}) {
+function Home({handleChange}) {
     return (
         <div>
             <SearchBar handleChange={handleChange} />
-            <CountryTable filteredList={filteredList}/>
+            <CountryTable />
         </div>
     );
 }
 
 Home.displayName = 'Home';
 Home.propTypes = {
-    filteredList: PropTypes.arrayOf(PropTypes.object).isRequired,
     handleChange: PropTypes.func
 }
 
