@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 import './CountryDetails.css';
 
-export default function CountryDetails({handleClick}) {
+export default function CountryDetails({handleBackHomeClick}) {
     const {name} = useParams();
     const filteredList = useSelector((state) => state.countryReducer.filteredList);
 
@@ -25,12 +25,12 @@ export default function CountryDetails({handleClick}) {
                 </ListGroup>
             </Card>
 
-            <button className='back-btn' onClick={handleClick}><Link to='/'>Back to Homepage</Link></button>
+            <button className='back-btn' onClick={handleBackHomeClick}><Link to='/'>Back to Homepage</Link></button>
         </div>
     );
 }
 
 CountryDetails.displayName = 'CountryDetails';
 CountryDetails.propTypes = {
-    handleClick: PropTypes.func
+    handleBackHomeClick: PropTypes.func
 }

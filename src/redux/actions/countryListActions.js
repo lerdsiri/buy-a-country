@@ -20,3 +20,10 @@ export function filterCountries(searchTerm) {
         payload: {searchTerm}
     }
 }
+
+export function setPurchased(purchasedCountry) {
+    return {
+        type: "PURCHASED",
+        payload: {purchasedCountry}
+    }
+}

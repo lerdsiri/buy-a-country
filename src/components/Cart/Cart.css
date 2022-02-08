@@ -1,0 +1,14 @@
+.cart-page {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.cart-page button {
+    margin: 0.5rem;
+    background-color: aquamarine;
+}
+
+.cart-icon {
+    font-size: 2rem;
+    color: blue;
+}

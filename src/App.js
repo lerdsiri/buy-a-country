@@ -4,8 +4,9 @@ import { useDispatch } from 'react-redux';
 
 import Home from './components/Home/Home';
 import CountryDetails from './components/CountryDetails/CountryDetails';
-import { fetchCountries } from './redux/actions';
-import { filterCountries } from './redux/actions';
+import Cart from './components/Cart/Cart';
+import { fetchCountries, filterCountries, setPurchased } from './redux/actions/countryListActions';
+import { addToCart, increaseQuant, decreaseQuant, removeFromCart } from './redux/actions/cartActions';
 import './App.css';
 
 function App() {
@@ -19,15 +20,38 @@ function App() {
     dispatch(filterCountries(evt.target.value))
   }, [dispatch]);
 
-  const handleClick = useCallback(() => {
+  const handleBackHomeClick = useCallback(() => {
     dispatch(filterCountries(""));
+  }, [dispatch]);
+
+  const handleBuyClick = useCallback((selectedCountry) => {
+    dispatch(setPurchased(selectedCountry));
+    dispatch(addToCart(selectedCountry));
+  }, [dispatch]);
+
+  const handleIncQuant = useCallback((selectedCountry) => {
+    dispatch(increaseQuant(selectedCountry));
+  }, [dispatch]);
+
+  const handleDecQuant = useCallback((selectedCountry) => {
+    dispatch(decreaseQuant(selectedCountry));
+  }, [dispatch]);
+
+  const handleRemove = useCallback((selectedCountry) => {
+    dispatch(removeFromCart(selectedCountry));
   }, [dispatch]);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home handleChange={handleChange} />} />
-        <Route path='/details/:name' element={<CountryDetails handleClick={handleClick}/>} />
+        <Route path='/' element={<Home handleChange={handleChange} handleBuyClick={handleBuyClick} />} />
+        <Route path='/details/:name' element={<CountryDetails handleBackHomeClick={handleBackHomeClick}/>} />
+        <Route path='/cart' element={<Cart 
+          handleBackHomeClick={handleBackHomeClick}
+          handleIncQuant={handleIncQuant}
+          handleDecQuant={handleDecQuant} 
+          handleRemove={handleRemove}
+        />} />
       </Routes>
 
     </BrowserRouter>

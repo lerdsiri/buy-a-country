@@ -1,3 +1,13 @@
 .flags {
     width: 3rem;
 }
+
+.buy-btn {
+    background-color: aquamarine;
+    color: #909090;
+    border: 0.1rem solid #909090;
+}
+
+.faded-buy-btn {
+    opacity: 50%;
+}

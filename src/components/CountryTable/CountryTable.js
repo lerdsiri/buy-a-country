@@ -1,11 +1,10 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import { useSelector } from 'react-redux';
 
 import './CountryTable.css';
 
-export default function CountryTable() {
+export default function CountryTable({handleBuyClick}) {
     const filteredList = useSelector((state) => state.countryReducer.filteredList);
 
     return (
@@ -17,6 +16,7 @@ export default function CountryTable() {
                     <th>Population</th>
                     <th>Languages</th>
                     <th>Region</th>
+                    <th>Purchase</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,7 +24,7 @@ export default function CountryTable() {
                 
                     return (
                         <tr key={country.name.common} align='center'>
-                            <td><img src={country.flags.png} alt="" className="flags" /></td>
+                            <td><img src={country.flags.png} alt="flag" className="flags" /></td>
                             <td>
                                 <Link to={`/details/${country.name.common}`}>{country.name.common}</Link>
                             </td>
@@ -33,6 +33,9 @@ export default function CountryTable() {
                                 {country.languages ? Object.values(country.languages).join(', ') : "No languages"}
                             </td>
                             <td>{country.region}</td>
+                            <td>
+                                <button className={country.purchased ? "buy-btn faded-buy-btn" : "buy-btn"} onClick={() => handleBuyClick(country)}><strong>Add to cart</strong></button>
+                            </td>
                         </tr>
                     );
                 })}            

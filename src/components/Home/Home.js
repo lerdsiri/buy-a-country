@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { memo } from 'react';
 
 import CountryTable from '../CountryTable/CountryTable';
-import SearchBar from '../SearchBar/SearchBar';
+import NavBar from '../NavBar/NavBar';
 
-function Home({handleChange}) {
+function Home({handleChange, handleBuyClick}) {
     return (
         <div>
-            <SearchBar handleChange={handleChange} />
-            <CountryTable />
+            <NavBar handleChange={handleChange} />
+            <CountryTable handleBuyClick={handleBuyClick} />
         </div>
     );
 }
