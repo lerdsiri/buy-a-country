@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import Home from './components/Home/Home';
 import CountryDetails from './components/CountryDetails/CountryDetails';
 import Cart from './components/Cart/Cart';
-import { fetchCountries, filterCountries, setPurchased } from './redux/actions/countryListActions';
+import { fetchCountries, filterCountries } from './redux/actions/countryListActions';
 import { addToCart, increaseQuant, decreaseQuant, removeFromCart } from './redux/actions/cartActions';
 import './App.css';
 
@@ -25,7 +25,6 @@ function App() {
   }, [dispatch]);
 
   const handleBuyClick = useCallback((selectedCountry) => {
-    dispatch(setPurchased(selectedCountry));
     dispatch(addToCart(selectedCountry));
   }, [dispatch]);
 

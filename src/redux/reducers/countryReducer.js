@@ -6,15 +6,10 @@ const initialState = {
 export default function countryReducer(state = initialState, action) {
     switch(action.type) {
         case "GET_COUNTRIES":
-            const fullList = action.payload.countries;
-            fullList.forEach((country) => {
-                country.purchased = false;
-            });
-
             return {
                 ...state,
-                countries: fullList,
-                filteredList: fullList
+                countries: action.payload.countries,
+                filteredList: action.payload.countries
             };
         
         case "FILTER_COUNTRIES":
@@ -26,19 +21,6 @@ export default function countryReducer(state = initialState, action) {
             return {
                 ...state,
                 filteredList: result
-            };
-
-        case "PURCHASED":
-            const updatedList = state.filteredList;
-            const purchasedCountry = action.payload.purchasedCountry;
-            updatedList.forEach((country) => {
-                if(country.name.common === purchasedCountry.name.common) {
-                    country.purchased = true;
-                }
-            })
-            return {
-                ...state,
-                filteredList: updatedList
             };
         
         default:

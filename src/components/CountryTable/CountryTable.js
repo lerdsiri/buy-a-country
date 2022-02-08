@@ -6,6 +6,9 @@ import './CountryTable.css';
 
 export default function CountryTable({handleBuyClick}) {
     const filteredList = useSelector((state) => state.countryReducer.filteredList);
+    const cart = useSelector((state) => state.cartReducer.cart);
+
+    const cartItems = cart.map((country) => country.name.common);
 
     return (
         <Table striped bordered hover>
@@ -34,7 +37,13 @@ export default function CountryTable({handleBuyClick}) {
                             </td>
                             <td>{country.region}</td>
                             <td>
-                                <button className={country.purchased ? "buy-btn faded-buy-btn" : "buy-btn"} onClick={() => handleBuyClick(country)}><strong>Add to cart</strong></button>
+                                <button 
+                                    onClick={() => handleBuyClick(country)}
+                                    className={cartItems.includes(country.name.common) ? "buy-btn inactive" : "buy-btn"}
+                                    disabled={cartItems.includes(country.name.common)} 
+                                >
+                                    <strong>Add to cart</strong>
+                                </button>
                             </td>
                         </tr>
                     );

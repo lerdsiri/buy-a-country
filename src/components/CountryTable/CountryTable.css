@@ -8,6 +8,7 @@
     border: 0.1rem solid #909090;
 }
 
-.faded-buy-btn {
+.inactive {
     opacity: 50%;
+    cursor: not-allowed;
 }

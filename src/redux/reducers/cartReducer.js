@@ -7,7 +7,7 @@ export default function cartReducer(state = initialState, action) {
     switch(action.type) {
         case "ADD_TO_CART":
             {
-                const updatedCart = state.cart;
+                const updatedCart = [...state.cart];
                 const selectedCountry = action.payload.selectedCountry;
 
                 if(!updatedCart.some((cartedCountry) => cartedCountry.name.common === selectedCountry.name.common)) {
@@ -30,7 +30,7 @@ export default function cartReducer(state = initialState, action) {
         
         case "REMOVE_FROM_CART":
             {
-                const updatedCart = state.cart;
+                const updatedCart = [...state.cart];
                 const selectedCountry = action.payload.selectedCountry; 
                 let quantToRemove = 0;   
                 
@@ -51,7 +51,7 @@ export default function cartReducer(state = initialState, action) {
 
         case "INCREASE_QUANT":
             {
-                const updatedCart = state.cart;
+                const updatedCart = [...state.cart];
                 const selectedCountry = action.payload.selectedCountry; 
                 
                 updatedCart.forEach((cartedCountry) => {
@@ -69,7 +69,7 @@ export default function cartReducer(state = initialState, action) {
 
         case "DECREASE_QUANT":
             {
-                const updatedCart = state.cart;
+                const updatedCart = [...state.cart];
                 const selectedCountry = action.payload.selectedCountry;    
 
                 updatedCart.forEach((cartedCountry) => {
