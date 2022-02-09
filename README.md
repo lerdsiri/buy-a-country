@@ -5,7 +5,7 @@ Also create a functional search bar, which will search the list of countries by 
 
 Features: React, Hooks, Routers, Bootstrap
 
-Site deployed at https://react-hooks-router-assignment.netlify.app/
+Site deployed at https://siri-react-redux-assignment.netlify.app/
 
 
 ## Getting Started with Create React App
