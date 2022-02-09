@@ -6,7 +6,7 @@ import { FaShoppingCart } from 'react-icons/fa';
 
 import './NavBar.css';
 
-export default function NavBar({handleChange}) {
+export default function NavBar({ handleChange, handleSortByName, handleSortByPop }) {
     const numOfItems = useSelector((state) => state.cartReducer.numOfItems);
 
     return (
@@ -20,6 +20,8 @@ export default function NavBar({handleChange}) {
                     placeholder="Search by country's name"
                     className='search-box' 
                 />
+                <button onClick={handleSortByName}>Sort By Name</button>
+                <button onClick={handleSortByPop}>Sort By Population</button>
             </div>
             <div className='cart-area'>
                 <p className='cart-icon'><Link to='/cart'><FaShoppingCart /></Link></p>
@@ -32,5 +34,7 @@ export default function NavBar({handleChange}) {
 
 NavBar.displayName = 'NavBar';
 NavBar.propTypes = {
-    handleChange: PropTypes.func
+    handleChange: PropTypes.func,
+    handleSortByName: PropTypes.func,
+    handleSortByPop: PropTypes.func
 }

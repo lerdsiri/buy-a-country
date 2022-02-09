@@ -5,10 +5,14 @@ import { memo } from 'react';
 import CountryTable from '../CountryTable/CountryTable';
 import NavBar from '../NavBar/NavBar';
 
-function Home({handleChange, handleBuyClick}) {
+function Home({ handleChange, handleBuyClick, handleSortByName, handleSortByPop }) {
     return (
         <div>
-            <NavBar handleChange={handleChange} />
+            <NavBar 
+                handleChange={handleChange} 
+                handleSortByName={handleSortByName} 
+                handleSortByPop={handleSortByPop}
+            />
             <CountryTable handleBuyClick={handleBuyClick} />
         </div>
     );
@@ -16,7 +20,10 @@ function Home({handleChange, handleBuyClick}) {
 
 Home.displayName = 'Home';
 Home.propTypes = {
-    handleChange: PropTypes.func
+    handleChange: PropTypes.func,
+    handleBuyClick: PropTypes.func,
+    handleSortByName: PropTypes.func,
+    handleSortByPop: PropTypes.func,
 }
 
 export default memo(Home);

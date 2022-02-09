@@ -20,3 +20,15 @@ export function filterCountries(searchTerm) {
         payload: {searchTerm}
     }
 }
+
+export function sortByName() {
+    return {
+        type: "SORT_BY_NAME",
+    }
+}
+
+export function sortByPop() {
+    return {
+        type: "SORT_BY_POP",
+    }
+}

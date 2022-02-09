@@ -23,6 +23,20 @@ export default function countryReducer(state = initialState, action) {
                 filteredList: result
             };
         
+        case "SORT_BY_NAME":
+            return {
+                ...state,
+                countries: [...state.countries].sort((a,b) => a.name.common.localeCompare(b.name.common)),
+                filteredList: [...state.filteredList].sort((a,b) => a.name.common.localeCompare(b.name.common))
+            }
+
+        case "SORT_BY_POP":
+            return {
+                ...state,
+                countries: [...state.countries].sort((a,b) => a.population - b.population),
+                filteredList: [...state.filteredList].sort((a,b) => a.population - b.population)
+            }
+        
         default:
             return state;
     }
