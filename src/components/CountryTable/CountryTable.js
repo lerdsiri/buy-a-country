@@ -6,6 +6,7 @@ import './CountryTable.css';
 
 export default function CountryTable({handleBuyClick}) {
     const filteredList = useSelector((state) => state.countryReducer.filteredList);
+
     const cart = useSelector((state) => state.cartReducer.cart);
 
     const cartItems = cart.map((country) => country.name.common);
