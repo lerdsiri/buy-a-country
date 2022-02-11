@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -8,6 +8,7 @@ import Cart from './components/Cart/Cart';
 import { fetchCountries, filterCountries, sortByName, sortByPop } from './redux/actions/countryListActions';
 import { addToCart, increaseQuant, decreaseQuant, removeFromCart } from './redux/actions/cartActions';
 import './App.css';
+import { Country } from './types';
 
 function App() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function App() {
   }, [dispatch]);
 
   //functions related to display
-  const handleChange = useCallback((evt) => {
+  const handleChange = useCallback((evt: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(filterCountries(evt.target.value))
   }, [dispatch]);
 
@@ -34,19 +35,19 @@ function App() {
   }, [dispatch])
 
 //functions related to cart
-  const handleBuyClick = useCallback((selectedCountry) => {
+  const handleBuyClick = useCallback((selectedCountry: Country) => {
     dispatch(addToCart(selectedCountry));
   }, [dispatch]);
 
-  const handleIncQuant = useCallback((selectedCountry) => {
+  const handleIncQuant = useCallback((selectedCountry: Country) => {
     dispatch(increaseQuant(selectedCountry));
   }, [dispatch]);
 
-  const handleDecQuant = useCallback((selectedCountry) => {
+  const handleDecQuant = useCallback((selectedCountry: Country) => {
     dispatch(decreaseQuant(selectedCountry));
   }, [dispatch]);
 
-  const handleRemove = useCallback((selectedCountry) => {
+  const handleRemove = useCallback((selectedCountry: Country) => {
     dispatch(removeFromCart(selectedCountry));
   }, [dispatch]);
 

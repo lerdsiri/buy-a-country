@@ -6,10 +6,11 @@ import PropTypes from 'prop-types';
 import { FaShoppingCart } from 'react-icons/fa';
 
 import './Cart.css';
+import { CartProp, RootState } from '../../types';
 
-export default function Cart({handleBackHomeClick, handleIncQuant, handleDecQuant, handleRemove}) {
+export default function Cart({handleBackHomeClick, handleIncQuant, handleDecQuant, handleRemove}: CartProp) {
 
-    const { cart, numOfItems } = useSelector((state) => state.cartReducer);
+    const { cart, numOfItems } = useSelector((state: RootState) => state.cartReducer);
     
     console.log(cart);
     console.log(numOfItems);
@@ -30,9 +31,9 @@ export default function Cart({handleBackHomeClick, handleIncQuant, handleDecQuan
             <h2 className='cart-icon'><FaShoppingCart /></h2>
             <p>Number of items in cart: {numOfItems}</p>
 
-            <Table striped bordered hover>
+            <Table striped bordered hover className="table">
                 <thead>
-                    <tr align="center">
+                    <tr>
                         <th>Flag</th>
                         <th>Name</th>
                         <th>Unit Price</th>
@@ -43,7 +44,7 @@ export default function Cart({handleBackHomeClick, handleIncQuant, handleDecQuan
                 <tbody>
                     {cart.map((country) => {
                         return (
-                            <tr key={country.name.common} align="center">
+                            <tr key={country.name.common}>
                                 <td><img src={country.flags.png} alt="flag" className="flags" /></td>
                                 <td>{country.name.common}</td>
                                 <td>Priceless</td>

@@ -1,14 +1,13 @@
-import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
 import './CountryDetails.css';
+import { CountryDetailsProp, RootState } from '../../types';
 
-export default function CountryDetails({handleBackHomeClick}) {
+export default function CountryDetails({handleBackHomeClick}: CountryDetailsProp) {
     const {name} = useParams();
-    const filteredList = useSelector((state) => state.countryReducer.filteredList);
+    const filteredList = useSelector((state: RootState) => state.countryReducer.filteredList);
 
     let country = filteredList.filter(country => country.name.common === {name}.name)[0];
 
@@ -28,9 +27,4 @@ export default function CountryDetails({handleBackHomeClick}) {
             <button className='back-btn' onClick={handleBackHomeClick}><Link to='/'>Back to Homepage</Link></button>
         </div>
     );
-}
-
-CountryDetails.displayName = 'CountryDetails';
-CountryDetails.propTypes = {
-    handleBackHomeClick: PropTypes.func
 }

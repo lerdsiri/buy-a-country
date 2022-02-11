@@ -1,13 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 
 import './NavBar.css';
+import { NavBarProp, RootState } from '../../types';
 
-export default function NavBar({ handleChange, handleSortByName, handleSortByPop }) {
-    const numOfItems = useSelector((state) => state.cartReducer.numOfItems);
+export default function NavBar({ handleChange, handleSortByName, handleSortByPop }: NavBarProp) {
+    const numOfItems = useSelector((state: RootState) => state.cartReducer.numOfItems);
 
     return (
         <nav>
@@ -30,11 +29,4 @@ export default function NavBar({ handleChange, handleSortByName, handleSortByPop
         </nav>
         
     );
-}
-
-NavBar.displayName = 'NavBar';
-NavBar.propTypes = {
-    handleChange: PropTypes.func,
-    handleSortByName: PropTypes.func,
-    handleSortByPop: PropTypes.func
 }

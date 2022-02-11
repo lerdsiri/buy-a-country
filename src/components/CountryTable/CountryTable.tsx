@@ -3,17 +3,18 @@ import Table from 'react-bootstrap/Table';
 import { useSelector } from 'react-redux';
 
 import './CountryTable.css';
+import { CountryTableProp, RootState } from '../../types';
 
-export default function CountryTable({handleBuyClick}) {
-    const filteredList = useSelector((state) => state.countryReducer.filteredList);
+export default function CountryTable({handleBuyClick}: CountryTableProp) {
+    const filteredList = useSelector((state: RootState) => state.countryReducer.filteredList);
 
-    const cart = useSelector((state) => state.cartReducer.cart);
+    const cart = useSelector((state: RootState) => state.cartReducer.cart);
 
     const cartItems = cart.map((country) => country.name.common);
 
     return (
-        <Table striped bordered hover>
-            <thead align='center'>
+        <Table striped bordered hover className="table">
+            <thead>
                 <tr>
                     <th>Flag</th>
                     <th>Name</th>
@@ -27,7 +28,7 @@ export default function CountryTable({handleBuyClick}) {
                 {filteredList && filteredList.map((country) => {
                 
                     return (
-                        <tr key={country.name.common} align='center'>
+                        <tr key={country.name.common}>
                             <td><img src={country.flags.png} alt="flag" className="flags" /></td>
                             <td>
                                 <Link to={`/details/${country.name.common}`}>{country.name.common}</Link>

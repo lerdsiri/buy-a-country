@@ -1,9 +1,11 @@
+import { CartAction, CartReducerState } from "../../types";
+
 const initialState = {
     cart: [],
     numOfItems: 0,
 }
 
-export default function cartReducer(state = initialState, action) {
+export default function cartReducer(state: CartReducerState = initialState, action: CartAction): CartReducerState {
     switch(action.type) {
         case "ADD_TO_CART":
             {

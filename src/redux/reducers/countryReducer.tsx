@@ -1,9 +1,11 @@
+import { CountryListAction, CountryReducerState } from "../../types";
+
 const initialState = {
     countries: [],
     filteredList: [],
 };
 
-export default function countryReducer(state = initialState, action) {
+export default function countryReducer(state: CountryReducerState = initialState, action: CountryListAction): CountryReducerState {
     switch(action.type) {
         case "GET_COUNTRIES":
             return {
